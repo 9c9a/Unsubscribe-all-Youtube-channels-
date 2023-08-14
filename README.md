@@ -14,35 +14,28 @@ var i = 0;
 
 var myVar = setInterval(myTimer, 3000);
 
-function myTimer () {
-
+function myTimer() {
     var els = document.getElementById("grid-container").getElementsByClassName("ytd-expanded-shelf-contents-renderer");
 
     if (i < els.length) {
-
         els[i].querySelector("[aria-label^='Unsubscribe from']").click();
 
-        setTimeout(function () {
-
-            var unSubBtn = document.getElementById("confirm-button").click();
-
+        setTimeout(function() {
+            // Here's the change. Targeting the nested button element inside the yt-button-renderer.
+            var unSubBtn = document.querySelector("yt-button-renderer#confirm-button button").click();
         }, 2000);
 
-        setTimeout(function () {
-
+        setTimeout(function() {
             els[i].parentNode.removeChild(els[i]);
-
         }, 2000);
-
     }
 
     i++;
 
     console.log(i + " unsubscribed by 9c9a");
-
     console.log(els.length + " remaining");
-
 }
+
 ```
 
 ##Step 4:
